@@ -53,7 +53,7 @@ function isValidUrl(str) {
   }
   
   async function isAliasTaken(alias) {
-    const existingUrl = await Url.findOne({ shortUrl: alias });
+    const existingUrl = await UrlModel.findOne({ shortUrl: alias });
     return !!existingUrl;
   }
   
