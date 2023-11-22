@@ -5,9 +5,9 @@ const { urlrouter } = require("./routes/urlRoute");
 const app=express();
 app.use(express.json());
 
-app.use("/api/",urlrouter);
+app.use("/",urlrouter);
 
-app.get("/",(req,res)=>{
+app.get("/test",(req,res)=>{
     try {
         res.send("welcome")
     } catch (error) {
