@@ -28,8 +28,10 @@ const updateURL=async(req,res)=>{
         });
         await urlDocument.save();
       
-        const shortenedUrl = `${req.protocol}://${req.get('host')}/${shortUrl}`;
-        res.json({ originalUrl: url, shortenedUrl });
+      res.status(200).json({
+        success:true,
+        message:`Your Short URL is ${shortUrl}`
+      })
     } catch (error) {
         console.log(error);
     }
@@ -41,7 +43,7 @@ const getURL=async(req,res)=>{
       //  console.log(shortUrl)
         // Find the original URL from the database
         const urlDocument = await UrlModel.findOne({ shortUrl });
-        res.send(urlDocument.originalUrl);
+        res.status(200).json(urlDocument.originalUrl);
     } catch (error) {
         console.log(error);
     }

@@ -5,7 +5,14 @@ const { urlrouter } = require("./routes/urlRoute");
 const app=express();
 app.use(express.json());
 
-app.use("/",urlrouter);
+const cors = require("cors"); 
+
+app.use(
+  cors()
+);
+
+
+app.use("/api/",urlrouter);
 
 app.get("/test",(req,res)=>{
     try {
