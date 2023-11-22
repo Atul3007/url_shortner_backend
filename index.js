@@ -1,7 +1,11 @@
 const express=require("express");
+const {connection}=require("./config/db");
+const { urlrouter } = require("./routes/urlRoute");
+
 const app=express();
+app.use(express.json());
 
-
+app.use("/api/",urlrouter);
 
 app.get("/",(req,res)=>{
     try {
@@ -11,10 +15,12 @@ app.get("/",(req,res)=>{
     }
 })
 
-app.listen(8000,(req,res)=>{
+app.listen(8000,async (req,res)=>{
     try {
-        console.log("listening on 8000")
+        await connection;
+        console.log("Connected to db")
     } catch (error) {
         console.log("error in connecting")
     }
+    console.log("listening to port 80000");
 })
